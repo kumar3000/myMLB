@@ -6,5 +6,9 @@ class Season_Stats:
     rpg: float
     
     def __init__(self, year: int):
-        stats = mlb.game_pace_data(season=year)
-        self.rpg = stats.get("sports")[0].get("runsPerGame")
+        self.year = year
+        self.stats = mlb.game_pace_data(season=year)
+        self.rpg = self.stats.get("sports")[0].get("runsPerGame")
+    
+    def get_rpg(self) -> float:
+        return self.rpg
